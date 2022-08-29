@@ -124,44 +124,32 @@ const Ranking = () => {
 };
 const styles = StyleSheet.create({
   container: {
-    //  justifyContent: 'center',
     flex: 1,
   },
   header: {
     flex: 0.7,
     flexDirection: 'row',
-    //  borderWidth: 1,
-    //  borderColor: 'black',
-    //  justifyContent: 'space-around',
     paddingTop: 5,
     paddingBottom: 5,
-    //  backgroundColor: '#eee',
     alignItems: 'center',
     borderBottomWidth: 1,
     borderColor: 'black',
   },
   content: {
     flex: 11,
-    //  backgroundColor: '#eee',
     alignItems: 'center',
   },
   contentBox: {
     marginBottom: 10,
     flexDirection: 'row',
-    //  justifyContent: 'space-around',
     alignItems: 'center',
     backgroundColor: 'white',
     height: 70,
-    //  borderBottomWidth: 1,
 
     shadowOpacity: 0.3,
     shadowColor: 'black',
     shadowOffset: {width: 2, height: 2},
     elevation: 3,
-
-    //  borderColor: '',
-    //  borderRadius: 10,
-    //  width: '90%',
   },
 });
 

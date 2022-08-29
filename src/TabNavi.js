@@ -2,8 +2,6 @@ import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 import {TextInput, View, StyleSheet, Text} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Test1 from './Test1';
-import Test2 from './Test2';
 import Ranking from './Ranking';
 import Home from './Home';
 import Icon from 'react-native-vector-icons/Ionicons';

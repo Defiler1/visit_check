@@ -78,19 +78,15 @@ const styles = StyleSheet.create({
     flex: 0.2,
     paddingTop: '17%',
     paddingLeft: '9%',
-    // backgroundColor: 'grey',
   },
   headerText: {
     fontSize: 30,
   },
   inputBoxs: {
     flex: 1,
-    // alignItems: 'center',
-    // backgroundColor: 'lightgreen',
   },
   inputBox: {
     alignItems: 'center',
-    // backgroundColor: 'lightblue',
   },
   submit: {
     width: '80%',

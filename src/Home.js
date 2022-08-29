@@ -39,7 +39,6 @@ const styles = StyleSheet.create({
   },
   clock: {
     flex: 2.4,
-    // borderColor: '#eee',
     borderWidth: 1,
     borderColor: 'black',
   },

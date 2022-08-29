@@ -28,15 +28,14 @@ const Clock = () => {
   const checkTimeFunc = () => {
     const now = dayjs();
     // 체크시간
-    const ymd = `${now.get('y')}-${now.get('month') + 1}-${now.get(
-      'date',
-    )} ${now.get('hour')}`;
 
-    const morningCheck = dayjs(`${ymd}:50:59`);
+    const ymd = `${now.get('y')}-${now.get('month') + 1}-${now.get('date')} `;
 
-    const selfStudyCheck = dayjs(`${ymd}:00:59`);
+    const morningCheck = dayjs(`${ymd} 08:50:59`);
 
-    const finishCheck = dayjs(`${ymd}:00:59`);
+    const selfStudyCheck = dayjs(`${ymd} 19:00:59`);
+
+    const finishCheck = dayjs(`${ymd} 21:00:59`);
 
     // 이걸로 테스트
     const test = dayjs(
@@ -58,9 +57,10 @@ const Clock = () => {
       finishCheck.diff(realTime) > 0
     ) {
       setTimerOn(true);
-    } else if (test.diff(realTime) <= 600000 && test.diff(realTime) > 0) {
-      setTimerOn(true);
-      setTimerTime(Math.floor(test.diff(realTime) / 1000));
+      // 테스트
+      // } else if (test.diff(realTime) <= 600000 && test.diff(realTime) > 0) {
+      //   setTimerOn(true);
+      //   setTimerTime(Math.floor(test.diff(realTime) / 1000));
     } else {
       setTimerOn(false);
     }
@@ -111,7 +111,7 @@ const Clock = () => {
     //   '토요일',
     // ];
 
-    setAmPm(now.format('HH') >= 12 ? '오전' : '오후'); // 오전 오후
+    setAmPm(now.format('HH') <= 12 ? '오전' : '오후'); // 오전 오후
     setTime(now.format('h:mm')); // 시간 12:45 12시간 포맷
     setDayOfWeek(dayOfWeekName[now.get('day')]); // 요일
     setRealTime(prevState => {

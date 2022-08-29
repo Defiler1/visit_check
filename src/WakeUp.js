@@ -50,7 +50,6 @@ const styles = StyleSheet.create({
     paddingBottom: 25,
     paddingLeft: 30,
     paddingRight: 30,
-    //  backgroundColor: 'lightblue',
     flexDirection: 'row',
     flex: 1,
     justifyContent: 'space-between',
@@ -63,7 +62,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     height: 62,
     width: 62,
-    //  flex: 1,
   },
   text: {
     fontSize: 17,

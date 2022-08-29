@@ -75,7 +75,6 @@ const styles = StyleSheet.create({
   },
   header: {
     flex: 0.5,
-    //  backgroundColor: 'lightblue',
     paddingTop: '17%',
     paddingLeft: '9%',
   },
@@ -85,19 +84,14 @@ const styles = StyleSheet.create({
   ipnutBox: {
     alignItems: 'center',
     flex: 1,
-    //  backgroundColor: 'lightyellow',
   },
   idInput: {
     height: 50,
     width: '80%',
     borderRadius: 5,
     borderColor: 'black',
-    //  borderWidth: 1,
     marginBottom: 15,
     backgroundColor: 'white',
-    //  padding: 10,
-    //  margin: 20,
-    //  backgroundColor: 'coral',
   },
   submit: {
     width: '80%',
