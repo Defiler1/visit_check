@@ -12,15 +12,38 @@ import {
 import axios from 'axios';
 import ImagePicker from 'react-native-image-picker';
 
-const SubmitImage = () => {
-  const [imageSrc, setImageSrc] = useState('');
+const SubmitImage = ({route}) => {
+  const [imageSrc, setImageSrc] = useState('a');
   const onPress = () => {
     // axios.post('http://attendenceProject.test/api/penalty/image', {
     //    penalty_id:penalty_id
     // })
   };
 
-  const subImage = () => {};
+  const subImage = async () => {
+    const result = await ImagePicker.launchImageLibrary({
+      mediaType: 'photo',
+    });
+    setImageSrc(result);
+  };
+
+  const uploadImg = async () => {
+    if (!imageSrc) {
+      console.log('img is not defined');
+      return;
+    }
+    try {
+      const res = await axios.post(
+        'http://attendenceProject.test/api/penalty/image',
+        {
+          image: imageSrc,
+          penalty_id: route.params.penalty_id,
+        },
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -29,15 +52,25 @@ const SubmitImage = () => {
         <TextInput style={styles.reasonInput} placeholder="제목" />
       </View>
       <View style={styles.imageBox}>
-        <Pressable style={styles.image} onPress={subImage}>
-          <Text style={{fontSize: 20}}>이미지 선택</Text>
+        <View style={styles.image} onPress={subImage}>
           <Image source={{uri: imageSrc}} />
-        </Pressable>
+        </View>
       </View>
-      <View style={styles.submit}>
-        <TouchableOpacity style={styles.submitBtn}>
-          <Text>제출</Text>
-        </TouchableOpacity>
+      <View style={styles.submitbox}>
+        <View style={styles.submit}>
+          <TouchableOpacity style={styles.submitBtn} onPress={subImage}>
+            <Text>이미지 선택</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.submit}>
+          <TouchableOpacity
+            style={styles.submitBtn}
+            onPress={() => {
+              uploadImg();
+            }}>
+            <Text>제출</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -69,6 +102,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     paddingTop: '7%',
+    paddingBottom: '3%',
   },
   image: {
     borderWidth: 1,
@@ -79,10 +113,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  submit: {
+  submitbox: {
     flex: 0.4,
+  },
+  submit: {
+    flex: 1,
     alignItems: 'center',
-    paddingTop: '7%',
+    justifyContent: 'center',
+    paddingBottom: '2%',
   },
   submitBtn: {
     borderWidth: 1,
@@ -90,7 +128,7 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     backgroundColor: 'white',
     width: '80%',
-    height: '40%',
+    height: '80%',
     alignItems: 'center',
     justifyContent: 'center',
   },

@@ -8,6 +8,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import StackNavi from './StackNavi';
 import SubmitReason from './SubmitReason';
 import SubmitImage from './SubmitImage';
+import PenaltyList from './PenaltyList';
 
 const TabNavi = () => {
   const Tab = createBottomTabNavigator();
@@ -37,8 +38,8 @@ const TabNavi = () => {
         }}
       />
       <Tab.Screen
-        name="SubmitImage"
-        component={SubmitImage}
+        name="PenaltyList"
+        component={PenaltyList}
         options={{
           tabBarHideOnKeyboard: true,
           headerShown: false,
