@@ -3,8 +3,9 @@ import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import axios from 'axios';
 
 const HeaderCom = ({data}) => {
-  const [userName, setUserName] = useState('문석훈');
+  const [userName, setUserName] = useState('홍길동');
   const [ranking, setRanking] = useState(0); // 지각 랭킹
+  const [leftKm, setLeftKm] = useState(0); // 남은 운동 키로수
   const [lateCount, setLateCount] = useState(0); // 지각 횟수
   const [rate, setRate] = useState(0); // 출석률
   const [datas, setDatas] = useState([]);
@@ -31,8 +32,8 @@ const HeaderCom = ({data}) => {
       <Text style={(styles.headerBigText, styles.headerName)}>{userName}</Text>
       <View style={styles.headerContent}>
         <View style={styles.headerContentBox}>
-          <Text style={styles.headerBigText}>{ranking}</Text>
-          <Text style={styles.headerSmallText}>지각랭킹</Text>
+          <Text style={styles.headerBigText}>{leftKm}</Text>
+          <Text style={styles.headerSmallText}>남은Km</Text>
         </View>
         <View style={styles.headerContentBox}>
           <Text style={styles.headerBigText}>{lateCount}</Text>

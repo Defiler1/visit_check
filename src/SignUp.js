@@ -1,31 +1,51 @@
 import React, {useState} from 'react';
 import {
   SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
   TextInput,
-  useColorScheme,
   View,
-  Button,
   Pressable,
   KeyboardAvoidingView,
+  Alert,
 } from 'react-native';
 import CustomInput from './CustomInput';
 import useInput from './hooks/useInput';
+import axios from 'axios';
 
 const SignUp = ({navigation}) => {
-  // const [username, setUsername] = useState('');
-  // const [studentNumber, setStudentNumber] = useState('');
-  // const [pwd, setPwd] = useState('');
-  // const [confirmPwd, setConfirmPwd] = useState('');
   const username = useInput('');
   const studentNumber = useInput('');
   const pwd = useInput('');
   const confirmPwd = useInput('');
+
   const onPress = () => {
-    navigation.navigate('Login');
+    const callApi = async () => {
+      const req = await axios.post(
+        'http://attendenceProject.test/api/user/register',
+        {
+          name: username,
+          studentID: studentNumber,
+          password: pwd,
+        },
+      );
+    };
+    callApi();
+
+    Alert.alert(
+      '회원가입',
+      '회원가입이 완료되었습니다.',
+      [
+        {
+          text: '확인',
+          onPress: () => navigation.navigate('Login'),
+        },
+      ],
+      {
+        cancelable: true,
+        onDismiss: () => {},
+      },
+    );
   };
 
   return (

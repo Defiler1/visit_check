@@ -6,8 +6,9 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HeaderCom from './HeaderCom';
 import Clock from './Clock';
 import WakeUp from './WakeUp';
+import Reason from './Reason';
 
-const Home = () => {
+const Home = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -17,8 +18,8 @@ const Home = () => {
         <View style={styles.clock}>
           <Clock />
         </View>
-        <View style={styles.wakeUp}>
-          <WakeUp />
+        <View style={styles.reason}>
+          <Reason />
         </View>
       </View>
     </SafeAreaView>
@@ -42,7 +43,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'black',
   },
-  wakeUp: {
+  reason: {
     flex: 1.2,
     borderWidth: 1,
     borderColor: 'black',

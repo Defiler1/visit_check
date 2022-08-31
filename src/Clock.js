@@ -10,6 +10,7 @@ import {
 import {CountdownCircleTimer} from 'react-native-countdown-circle-timer';
 // dayjs사용이유 moment.js는 업데이트 끝남, dayjs가 33배 가벼움
 import dayjs from 'dayjs';
+import axios from 'axios';
 
 const Clock = () => {
   const [month, setMonth] = useState(''); // 월
@@ -141,14 +142,31 @@ const Clock = () => {
   // CountdownCircleTimer에서 이렇게 쓰라함
   const startTimer = ({remainingTime}) => {
     // 누르면 카메라 켜지게 함
-    const qrCheck = () => {};
+    const attendance = () => {
+      const callApi = async () => {
+        const req = await axios.post(
+          'http://attendenceProject.test/api/attendence',
+          {
+            check: 1,
+          },
+        );
+      };
+      callApi();
+    };
 
     // 지각했을때 누르면 원래 화면으로
     const lateOnPress = () => {
       setTimerOn(false);
 
-      // 추가해야하는거
-      // 백에다가 지각했다는 데이터 전송
+      const callApi = async () => {
+        const req = await axios.post(
+          'http://attendenceProject.test/api/attendence',
+          {
+            check: 2,
+          },
+        );
+      };
+      callApi();
     };
 
     if (remainingTime === 0) {
@@ -160,7 +178,7 @@ const Clock = () => {
     }
 
     return (
-      <TouchableOpacity onPress={qrCheck}>
+      <TouchableOpacity onPress={attendance}>
         <View style={styles.timer}>
           <Text style={{fontSize: 20}}>지각까지</Text>
           <Text style={{fontSize: 40}}>{children({remainingTime})}</Text>

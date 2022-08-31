@@ -1,33 +1,36 @@
 import React, {useState} from 'react';
 import {
   SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
   TextInput,
-  useColorScheme,
   View,
-  Button,
   Pressable,
   KeyboardAvoidingView,
 } from 'react-native';
 import CustomInput from './CustomInput';
 import useInput from './hooks/useInput';
+import axios from 'axios';
 
 const Login = ({navigation}) => {
-  //   const [id, setId] = useState('');
   const id = useInput('');
   // {value : "", onChangeText : function(text)=>void}
   const [inputId, setInputId] = useState('');
-  //   const [pwd, setPwd] = useState('');
   const pwd = useInput('');
   const [inputPwd, setInputPwd] = useState('');
-  const submitBtn = () => {
-    //  setId(inputId);
-  };
+
   const onPress = () => {
-    //  setId(inputId);
+    const callApi = async () => {
+      const req = await axios.post(
+        'http://attendenceProject.test/api/user/login',
+        {
+          studentID: id,
+          password: pwd,
+        },
+      );
+    };
+    callApi();
+
     navigation.navigate('TabNavi');
   };
 
@@ -35,7 +38,10 @@ const Login = ({navigation}) => {
     navigation.navigate('SignUp');
   };
 
-  const findPwd = () => {};
+  const findPwd = () => {
+    navigation.navigate('FindPwd');
+  };
+
   return (
     <SafeAreaView style={{flex: 1}}>
       <KeyboardAvoidingView style={styles.container}>

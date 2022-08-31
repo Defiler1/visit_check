@@ -5,6 +5,9 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Ranking from './Ranking';
 import Home from './Home';
 import Icon from 'react-native-vector-icons/Ionicons';
+import StackNavi from './StackNavi';
+import SubmitReason from './SubmitReason';
+import SubmitImage from './SubmitImage';
 
 const TabNavi = () => {
   const Tab = createBottomTabNavigator();
@@ -25,6 +28,17 @@ const TabNavi = () => {
       <Tab.Screen
         name="Ranking"
         component={Ranking}
+        options={{
+          tabBarHideOnKeyboard: true,
+          headerShown: false,
+          tabBarIcon: ({color, size}) => (
+            <Icon name="list-outline" size={size} color={color}></Icon>
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="SubmitImage"
+        component={SubmitImage}
         options={{
           tabBarHideOnKeyboard: true,
           headerShown: false,
