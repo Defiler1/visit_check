@@ -58,6 +58,9 @@ const SignUp = ({navigation}) => {
         [
           {
             text: '확인',
+            onPress: () => {
+              username.onChangeText('');
+            },
           },
         ],
         {
@@ -72,6 +75,9 @@ const SignUp = ({navigation}) => {
         [
           {
             text: '확인',
+            onPress: () => {
+              studentNumber.onChangeText('');
+            },
           },
         ],
         {
@@ -86,6 +92,9 @@ const SignUp = ({navigation}) => {
         [
           {
             text: '확인',
+            onPress: () => {
+              pwd.onChangeText('');
+            },
           },
         ],
         {
@@ -100,6 +109,9 @@ const SignUp = ({navigation}) => {
         [
           {
             text: '확인',
+            onPress: () => {
+              confirmPwd.onChangeText('');
+            },
           },
         ],
         {
