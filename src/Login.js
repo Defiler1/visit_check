@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -7,6 +7,7 @@ import {
   View,
   Pressable,
   KeyboardAvoidingView,
+  Alert,
 } from 'react-native';
 import CustomInput from './CustomInput';
 import useInput from './hooks/useInput';
@@ -15,22 +16,68 @@ import axios from 'axios';
 const Login = ({navigation}) => {
   const id = useInput('');
   // {value : "", onChangeText : function(text)=>void}
-  const [inputId, setInputId] = useState('');
   const pwd = useInput('');
-  const [inputPwd, setInputPwd] = useState('');
 
-  const onPress = () => {
-    const callApi = async () => {
-      const req = await axios.post(
-        'http://attendenceProject.test/api/user/login',
+  const onPress = async (inputId, inputPwd) => {
+    const idRegex = /^[0-9]{7}$/; // 숫자만 7자리
+    const pwdRegex = /^.{8,20}$/; // 8자 이상 20자 이하
+
+    if (idRegex.test(inputId) === false) {
+      Alert.alert(
+        '입력오류',
+        'id는 7자의 숫자로 구성된 학번입니다.',
+        [
+          {
+            text: '확인',
+            onPress: () => {
+              id.onChangeText('');
+            },
+          },
+        ],
         {
-          studentID: id,
-          password: pwd,
+          cancelable: true,
+          onDismiss: () => {},
         },
       );
-    };
-    callApi();
-
+    } else if (pwdRegex.test(inputPwd) === false) {
+      Alert.alert(
+        '입력오류',
+        '비밀번호는 8자이상 20자 이하입니다.',
+        [
+          {
+            text: '확인',
+            onPress: () => {
+              id.onChangeText('');
+            },
+          },
+        ],
+        {
+          cancelable: true,
+          onDismiss: () => {},
+        },
+      );
+    } else {
+      // const callApi = async () => {
+      //   const req = await axios.post(
+      //     'http://attendenceProject.test/api/user/login',
+      //     {
+      //       studentID: id,
+      //       password: pwd,
+      //     },
+      //   );
+      // };
+      // callApi();
+      await axios
+        .post('http://attendenceProject.test/api/user/login', {
+          studentID: id,
+          password: pwd,
+        })
+        .then(res => {})
+        .catch(err => {
+          console.log(err);
+        });
+      navigation.navigate('TabNavi');
+    }
     navigation.navigate('TabNavi');
   };
 
@@ -56,7 +103,11 @@ const Login = ({navigation}) => {
             placeholder="pwd"
             secureTextEntry={true}
           />
-          <Pressable style={styles.submit} onPress={onPress}>
+          <Pressable
+            style={styles.submit}
+            onPress={e => {
+              onPress(id.value, pwd.value);
+            }}>
             <Text>Sign In</Text>
           </Pressable>
           <View style={styles.options}>
