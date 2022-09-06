@@ -80,12 +80,14 @@ const PenaltyList = ({navigation}) => {
                 style={styles.list}
                 key={index}
                 onPress={() => {
+                  navigation.navigate('SubmitImage', {
+                    title: parsingDate(data.created_at),
+                  });
                   // navigation.navigate('', {penalty_id: data.id});
                 }}>
                 <Text style={{fontSize: 20}}>
                   {parsingDate(data.created_at)} 지각
                 </Text>
-                {/* <Text>{index}</Text> */}
               </TouchableOpacity>
             );
           })}

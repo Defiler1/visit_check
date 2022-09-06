@@ -8,12 +8,14 @@ import {
   Image,
   Pressable,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native';
 import axios from 'axios';
 import ImagePicker from 'react-native-image-picker';
 
 const SubmitImage = ({route}) => {
   const [imageSrc, setImageSrc] = useState('a');
+  const [dateTitle, setDateTitle] = useState(route.params.title);
   const onPress = () => {
     // axios.post('http://attendenceProject.test/api/penalty/image', {
     //    penalty_id:penalty_id
@@ -37,7 +39,7 @@ const SubmitImage = ({route}) => {
         'http://attendenceProject.test/api/penalty/image',
         {
           image: imageSrc,
-          penalty_id: route.params.penalty_id,
+          // penalty_id: route.params.penalty_id,
         },
       );
     } catch (err) {
@@ -47,9 +49,12 @@ const SubmitImage = ({route}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.headerText}>운동사진 올리기</Text>
       <View style={styles.inputBox}>
-        <TextInput style={styles.reasonInput} placeholder="제목" />
+        <TextInput
+          style={styles.reasonInput}
+          placeholder="제목"
+          value={dateTitle}
+        />
       </View>
       <View style={styles.imageBox}>
         <View style={styles.image} onPress={subImage}>
@@ -80,15 +85,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  headerText: {
-    fontSize: 30,
-    paddingTop: '15%',
-    paddingLeft: '10%',
-    paddingBottom: '5%',
-  },
   inputBox: {
     flex: 0.15,
     alignItems: 'center',
+    paddingTop: '5%',
   },
   reasonInput: {
     height: '100%',

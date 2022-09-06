@@ -7,7 +7,6 @@ import {
   View,
   Dimensions,
 } from 'react-native';
-import {BarChart} from 'react-native-chart-kit';
 import Chart from './Chart';
 import axios from 'axios';
 

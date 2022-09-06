@@ -21,8 +21,8 @@ const Clock = () => {
   const [realTime, setRealTime] = useState(''); // 타이머 시작시키기 위한 시간
   const [timerOn, setTimerOn] = useState(false); // 타이머 스위치
   const [restartKey, setRestartKey] = useState(0); // 타이머 다시 시작 시키기위한 키
-  const baseColor = '#D9D9D9'; // 시계컬러
-  const floatColor = '#33668B'; // 타이머 컬러
+  const baseColor = '#008BCF'; // 시계컬러
+  const floatColor = '#008BCF'; // 타이머 컬러
   const [timerTime, setTimerTime] = useState(0); // 타이머 시간
 
   // 출췍 시간

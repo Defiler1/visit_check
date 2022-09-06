@@ -9,6 +9,7 @@ import StackNavi from './StackNavi';
 import SubmitReason from './SubmitReason';
 import SubmitImage from './SubmitImage';
 import PenaltyList from './PenaltyList';
+import HomeStack from './navigation/HomeStack';
 
 const TabNavi = () => {
   const Tab = createBottomTabNavigator();
@@ -17,7 +18,7 @@ const TabNavi = () => {
     <Tab.Navigator>
       <Tab.Screen
         name="Home"
-        component={Home}
+        component={HomeStack}
         options={{
           tabBarHideOnKeyboard: true,
           headerShown: false,
@@ -29,17 +30,6 @@ const TabNavi = () => {
       <Tab.Screen
         name="Ranking"
         component={Ranking}
-        options={{
-          tabBarHideOnKeyboard: true,
-          headerShown: false,
-          tabBarIcon: ({color, size}) => (
-            <Icon name="list-outline" size={size} color={color}></Icon>
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="PenaltyList"
-        component={PenaltyList}
         options={{
           tabBarHideOnKeyboard: true,
           headerShown: false,

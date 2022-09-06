@@ -16,7 +16,7 @@ const SubmitReason = ({navigation}) => {
         },
       );
     };
-    //  navigation.navigate('Home')
+    //  navigation.navigate('HomeScreen')
   };
   return (
     <SafeAreaView style={styles.container}>
