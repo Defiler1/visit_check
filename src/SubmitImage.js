@@ -64,7 +64,7 @@ const SubmitImage = ({route}) => {
       <View style={styles.submitbox}>
         <View style={styles.submit}>
           <TouchableOpacity style={styles.submitBtn} onPress={subImage}>
-            <Text>이미지 선택</Text>
+            <Text style={{color: 'white'}}>이미지 선택</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.submit}>
@@ -73,7 +73,7 @@ const SubmitImage = ({route}) => {
             onPress={() => {
               uploadImg();
             }}>
-            <Text>제출</Text>
+            <Text style={{color: 'white'}}>제출</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -123,14 +123,12 @@ const styles = StyleSheet.create({
     paddingBottom: '2%',
   },
   submitBtn: {
-    borderWidth: 1,
     borderRadius: 5,
-    borderColor: 'black',
-    backgroundColor: 'white',
     width: '80%',
     height: '80%',
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#008BCF',
   },
 });
 

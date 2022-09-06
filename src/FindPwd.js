@@ -6,7 +6,6 @@ import {
   KeyboardAvoidingView,
   SafeAreaView,
   Pressable,
-  Alert,
 } from 'react-native';
 import axios from 'axios';
 import CustomInput from './CustomInput';

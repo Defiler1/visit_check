@@ -1,28 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import type {Node} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-  Image,
-} from 'react-native';
-import Login from './src/Login';
+import {SafeAreaView, StyleSheet, Text, View, Image} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {createStackNavigator} from '@react-navigation/stack';
-import SignUp from './src/SignUp';
-import TabNavi from './src/TabNavi';
-import FindPwd from './src/FindPwd';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import axios from 'axios';
 import {PermissionsAndroid} from 'react-native';
-
-const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
+import FirstPage from './src/navigation/FirstPage';
 
 const App: () => Node = () => {
   const [showRealApp, setShowRealApp] = useState(true);
@@ -80,41 +63,11 @@ const App: () => Node = () => {
     requestPermission();
   }, []);
 
-  // useEffect(() => {
-  //   const callApi = () => {
-  //     const res = axios.get('')
-  //   }
-  //   callApi()
-  // }, []);
-
   return (
     <>
       {showRealApp ? (
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="Login">
-            <Stack.Screen
-              name="Login"
-              component={Login}
-              options={{tabBarHideOnKeyboard: true, headerShown: false}}
-            />
-            <Stack.Screen
-              name="SignUp"
-              component={SignUp}
-              options={{tabBarHideOnKeyboard: true, headerShown: false}}
-            />
-
-            <Stack.Screen
-              name="FindPwd"
-              component={FindPwd}
-              options={{tabBarHideOnKeyboard: true, headerShown: false}}
-            />
-
-            <Stack.Screen
-              name="TabNavi"
-              component={TabNavi}
-              options={{tabBarHideOnKeyboard: true, headerShown: false}}
-            />
-          </Stack.Navigator>
+          <FirstPage />
         </NavigationContainer>
       ) : (
         <AppIntroSlider

@@ -1,5 +1,4 @@
 import React from 'react';
-import {View, Text, SafeAreaView} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import SubmitImage from '../SubmitImage';
 import PenaltyList from '../PenaltyList';
@@ -25,7 +24,7 @@ const HomeStack = ({navigation}) => {
         name="SubmitImage"
         component={SubmitImage}
         options={{
-          tabBarHideOnKeyboard: false,
+          tabBarHideOnKeyboard: true,
           headerShown: true,
           title: '운동 이미지 제출',
         }}
@@ -34,8 +33,8 @@ const HomeStack = ({navigation}) => {
         name="SubmitReason"
         component={SubmitReason}
         options={{
-          tabBarHideOnKeyboard: false,
-          headerShown: true,
+          tabBarHideOnKeyboard: true,
+          headerShown: false,
           title: '지각사유 제출',
         }}
       />

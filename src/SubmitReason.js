@@ -1,6 +1,14 @@
 import React, {useState} from 'react';
-import {View, Text, SafeAreaView, StyleSheet, Pressable} from 'react-native';
-import {TextInput} from 'react-native-gesture-handler';
+import {
+  View,
+  Text,
+  SafeAreaView,
+  StyleSheet,
+  Pressable,
+  ScrollView,
+  KeyboardAvoidingView,
+  TextInput,
+} from 'react-native';
 import axios from 'axios';
 
 const SubmitReason = ({navigation}) => {
@@ -20,15 +28,17 @@ const SubmitReason = ({navigation}) => {
   };
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.headerText}>지각사유 제출</Text>
-      <View style={styles.inputBox}>
-        <TextInput style={styles.reasonInput} />
-      </View>
-      <View style={styles.submit}>
-        <Pressable style={styles.submitBtn} onPress={onPress}>
-          <Text>제출</Text>
-        </Pressable>
-      </View>
+      <KeyboardAvoidingView style={styles.container}>
+        <Text style={styles.headerText}>지각사유 제출</Text>
+        <View style={styles.inputBox}>
+          <TextInput style={styles.reasonInput} />
+        </View>
+        <View style={styles.submit}>
+          <Pressable style={styles.submitBtn} onPress={onPress}>
+            <Text style={{color: 'white'}}>제출</Text>
+          </Pressable>
+        </View>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 };
@@ -41,7 +51,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     paddingTop: '15%',
     paddingLeft: '10%',
-    paddingBottom: '5%',
+    paddingBottom: '7%',
   },
   inputBox: {
     flex: 1,
@@ -58,17 +68,15 @@ const styles = StyleSheet.create({
   submit: {
     flex: 0.5,
     alignItems: 'center',
-    //  backgroundColor: 'lightblue',
     paddingTop: '5%',
   },
   submitBtn: {
     width: '80%',
     alignItems: 'center',
     justifyContent: 'center',
-    borderColor: 'black',
-    borderWidth: 1,
     height: '30%',
     borderRadius: 5,
+    backgroundColor: '#008BCF',
   },
 });
 

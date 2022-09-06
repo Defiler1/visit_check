@@ -1,12 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {
-  Button,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
 const WakeUp = () => {
   const [names, setNames] = useState(['신민규', '김동구', '진병언', '문석훈']);

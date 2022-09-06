@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   header: {
     flex: 0.7,
     borderWidth: 1,
-    borderColor: 'black',
+    borderColor: '#727272',
   },
   clockApp: {
     flex: 3.6,
@@ -41,22 +41,22 @@ const styles = StyleSheet.create({
   clock: {
     flex: 2.4,
     borderWidth: 1,
-    borderColor: 'black',
+    borderColor: '#727272',
   },
   reason: {
     flex: 1.2,
     borderWidth: 1,
-    borderColor: 'black',
+    borderColor: '#727272',
   },
   footer: {
     flex: 0.6,
     borderWidth: 1,
-    borderColor: 'black',
+    borderColor: '#727272',
   },
   ranking: {
     flex: 3.6,
     borderWidth: 1,
-    borderColor: 'black',
+    borderColor: '#727272',
   },
 });
 

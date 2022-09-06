@@ -1,12 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {
-  Text,
-  View,
-  Button,
-  StyleSheet,
-  SafeAreaView,
-  TouchableOpacity,
-} from 'react-native';
+import {Text, View, StyleSheet, TouchableOpacity} from 'react-native';
 import {CountdownCircleTimer} from 'react-native-countdown-circle-timer';
 // dayjs사용이유 moment.js는 업데이트 끝남, dayjs가 33배 가벼움
 import dayjs from 'dayjs';

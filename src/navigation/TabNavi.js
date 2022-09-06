@@ -1,15 +1,8 @@
-import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
-import {TextInput, View, StyleSheet, Text} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Ranking from './Ranking';
-import Home from './Home';
 import Icon from 'react-native-vector-icons/Ionicons';
-import StackNavi from './StackNavi';
-import SubmitReason from './SubmitReason';
-import SubmitImage from './SubmitImage';
-import PenaltyList from './PenaltyList';
-import HomeStack from './navigation/HomeStack';
+import HomeStack from './HomeStack';
+import Ranking from '../Ranking';
 
 const TabNavi = () => {
   const Tab = createBottomTabNavigator();

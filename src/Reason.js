@@ -7,7 +7,6 @@ import {
   PermissionsAndroid,
 } from 'react-native';
 import axios from 'axios';
-import {isUriAnAndroidResourceIdentifier} from 'react-native-svg/lib/typescript/LocalSvg';
 import ImagePicker from 'react-native-image-picker';
 import {useNavigation} from '@react-navigation/native';
 
