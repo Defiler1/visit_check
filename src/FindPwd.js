@@ -8,7 +8,7 @@ import {
   Pressable,
 } from 'react-native';
 import axios from 'axios';
-import CustomInput from './CustomInput';
+import CustomInput from './hooks/CustomInput';
 import useInput from './hooks/useInput';
 
 const FindPwd = ({navigation}) => {

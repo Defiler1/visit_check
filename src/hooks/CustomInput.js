@@ -1,6 +1,10 @@
 import React from 'react';
 import {TextInput, StyleSheet} from 'react-native';
-
+/**
+ *
+ * @param params stateHandler, placeholder, secureTextEntry
+ * @returns void
+ */
 const CustomInput = ({stateHandler, placeholder, secureTextEntry}) => {
   return (
     <TextInput

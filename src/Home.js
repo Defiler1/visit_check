@@ -5,7 +5,6 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import HeaderCom from './HeaderCom';
 import Clock from './Clock';
-import WakeUp from './WakeUp';
 import Reason from './Reason';
 
 const Home = ({navigation}) => {

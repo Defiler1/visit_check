@@ -7,9 +7,63 @@ import axios from 'axios';
 import {PermissionsAndroid} from 'react-native';
 import FirstPage from './src/navigation/FirstPage';
 import {Slides} from './src/Slides';
+import AsyncStorage from '@react-native-community/async-storage';
 
 const App: () => Node = () => {
-  const [showRealApp, setShowRealApp] = useState(true);
+  const [showRealApp, setShowRealApp] = useState(false);
+  const [firstLaunch, setFirstLaunch] = useState('');
+
+  useEffect(() => {
+    const requestPermission = async () => {
+      // 앱 구동 시 승인 처리 필요한 곳
+      const scan = await PermissionsAndroid.check(
+        'android.permission.BLUETOOTH_SCAN',
+      );
+      const connect = await PermissionsAndroid.check(
+        'android.permission.BLUETOOTH_CONNECT',
+      );
+      const location = await PermissionsAndroid.check(
+        'android.permission.ACCESS_FINE_LOCATION',
+      );
+      if (!scan) {
+        const scanGrant = await PermissionsAndroid.request(
+          'android.permission.BLUETOOTH_SCAN',
+        );
+      }
+      if (!connect) {
+        const connectGrant = await PermissionsAndroid.request(
+          'android.permission.BLUETOOTH_CONNECT',
+        );
+      }
+      if (!location) {
+        const locationGrant = await PermissionsAndroid.request(
+          'android.permission.ACCESS_FINE_LOCATION',
+        );
+      }
+    };
+    const setIntro = async () => {
+      return await AsyncStorage.setItem('intro', '1', (err, result) => {
+        console.log('setItem');
+      });
+    };
+
+    // 로컬 스토리지의 데이터에따라 어플 처음 실행하는지에 따라서 인트로 출력
+    const getIntro = async () => {
+      return await AsyncStorage.getItem('intro', async (err, result) => {
+        console.log('result: ' + result);
+        await setFirstLaunch(result);
+        console.log('firstLaunch1: ' + firstLaunch);
+      });
+    };
+
+    requestPermission();
+    setIntro();
+    getIntro();
+    console.log('firstLaunch : ' + firstLaunch);
+    if (firstLaunch === '1') {
+      setShowRealApp(true);
+    }
+  }, []);
 
   const onDone = () => {
     setShowRealApp(true);
@@ -31,38 +85,6 @@ const App: () => Node = () => {
       </View>
     );
   };
-
-  const requestPermission = async () => {
-    // 앱 구동 시 승인 처리 필요한 곳
-    const scan = await PermissionsAndroid.check(
-      'android.permission.BLUETOOTH_SCAN',
-    );
-    const connect = await PermissionsAndroid.check(
-      'android.permission.BLUETOOTH_CONNECT',
-    );
-    const location = await PermissionsAndroid.check(
-      'android.permission.ACCESS_FINE_LOCATION',
-    );
-    if (!scan) {
-      const scanGrant = await PermissionsAndroid.request(
-        'android.permission.BLUETOOTH_SCAN',
-      );
-    }
-    if (!connect) {
-      const connectGrant = await PermissionsAndroid.request(
-        'android.permission.BLUETOOTH_CONNECT',
-      );
-    }
-    if (!location) {
-      const locationGrant = await PermissionsAndroid.request(
-        'android.permission.ACCESS_FINE_LOCATION',
-      );
-    }
-  };
-
-  useEffect(() => {
-    requestPermission();
-  }, []);
 
   return (
     <>
@@ -103,33 +125,3 @@ const styles = StyleSheet.create({
 });
 
 export default App;
-
-// const slides = [
-//   {
-//     key: 's1',
-//     text: '2WDJ 출첵체크 앱 입니다.',
-//     title: '환영합니다',
-//     image: {
-//       uri: 'https://raw.githubusercontent.com/AboutReact/sampleresource/master/intro_mobile_recharge.png',
-//     },
-//     backgroundColor: '#20d2bb',
-//   },
-//   {
-//     key: 's2',
-//     text: '비콘 근처에서 어플의 원형안의 텍스트를\n 터치하면 출석체크가 됩니다.',
-//     title: '사용법',
-//     image: {
-//       uri: './src/assets/demo.PNG',
-//     },
-//     backgroundColor: '#febe29',
-//   },
-//   {
-//     key: 's3',
-//     title: '',
-//     text: '지각하지 맙시다!',
-//     image: {
-//       uri: 'https://raw.githubusercontent.com/AboutReact/sampleresource/master/intro_flight_ticket_booking.png',
-//     },
-//     backgroundColor: '#22bcb5',
-//   },
-// ];

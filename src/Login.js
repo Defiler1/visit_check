@@ -9,7 +9,7 @@ import {
   KeyboardAvoidingView,
   Alert,
 } from 'react-native';
-import CustomInput from './CustomInput';
+import CustomInput from './hooks/CustomInput';
 import useInput from './hooks/useInput';
 import axios from 'axios';
 
