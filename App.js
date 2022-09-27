@@ -10,9 +10,10 @@ import {Slides} from './src/Slides';
 import AsyncStorage from '@react-native-community/async-storage';
 
 const App: () => Node = () => {
-  const [showRealApp, setShowRealApp] = useState(false);
+  const [showRealApp, setShowRealApp] = useState(true);
   const [firstLaunch, setFirstLaunch] = useState('');
 
+  // 비콘
   useEffect(() => {
     const requestPermission = async () => {
       // 앱 구동 시 승인 처리 필요한 곳
@@ -42,24 +43,22 @@ const App: () => Node = () => {
       }
     };
     const setIntro = async () => {
-      return await AsyncStorage.setItem('intro', '1', (err, result) => {
-        console.log('setItem');
-      });
+      return await AsyncStorage.setItem('intro', '1', (err, result) => {});
     };
 
     // 로컬 스토리지의 데이터에따라 어플 처음 실행하는지에 따라서 인트로 출력
     const getIntro = async () => {
-      return await AsyncStorage.getItem('intro', async (err, result) => {
-        console.log('result: ' + result);
-        await setFirstLaunch(result);
-        console.log('firstLaunch1: ' + firstLaunch);
+      await AsyncStorage.getItem('intro', async (err, result) => {
+        setFirstLaunch(result);
+        // 고쳐야함 저장안됨
+        console.log('result : ', result);
+        console.log('asdf : ', firstLaunch);
       });
     };
 
     requestPermission();
     setIntro();
     getIntro();
-    console.log('firstLaunch : ' + firstLaunch);
     if (firstLaunch === '1') {
       setShowRealApp(true);
     }

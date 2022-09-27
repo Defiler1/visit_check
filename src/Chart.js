@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import {StyleSheet, Text, View, Dimensions} from 'react-native';
 import {BarChart} from 'react-native-chart-kit';
 import axios from 'axios';
-// import asdf from './assets/demo.PNG';
 
 const Chart = ({datas}) => {
   const [first, setFirst] = useState({});
