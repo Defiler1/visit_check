@@ -1,9 +1,9 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import Login from '../Login';
-import SignUp from '../SignUp';
-import FindPwd from '../FindPwd';
+import Login from '../register/Login';
+import SignUp from '../register/SignUp';
+import FindPwd from '../register/FindPwd';
 import TabNavi from './TabNavi';
 
 const Stack = createStackNavigator();

@@ -9,8 +9,8 @@ import {
   KeyboardAvoidingView,
   Alert,
 } from 'react-native';
-import CustomInput from './hooks/CustomInput';
-import useInput from './hooks/useInput';
+import CustomInput from '../hooks/CustomInput';
+import useInput from '../hooks/useInput';
 import axios from 'axios';
 
 const Login = ({navigation}) => {

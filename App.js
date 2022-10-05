@@ -8,13 +8,15 @@ import {PermissionsAndroid} from 'react-native';
 import FirstPage from './src/navigation/FirstPage';
 import {Slides} from './src/Slides';
 import AsyncStorage from '@react-native-community/async-storage';
+import userDataStorage from './src/hooks/userDataStorage';
 
 const App: () => Node = () => {
   const [showRealApp, setShowRealApp] = useState(true);
   const [firstLaunch, setFirstLaunch] = useState('');
+  const [userData, setUserData] = useState();
 
-  // 비콘
   useEffect(() => {
+    // 비콘
     const requestPermission = async () => {
       // 앱 구동 시 승인 처리 필요한 곳
       const scan = await PermissionsAndroid.check(
@@ -42,13 +44,19 @@ const App: () => Node = () => {
         );
       }
     };
+
+    // userDataStorage.set('true').catch(console.error);
+    // userDataStorage.get(userData).then(setUserData).catch(console.error);
+    // console.log(userData);
+
     const setIntro = async () => {
-      return await AsyncStorage.setItem('intro', '1', (err, result) => {});
+      await AsyncStorage.setItem('intro', 'true', (err, result) => {});
+      return;
     };
 
     // 로컬 스토리지의 데이터에따라 어플 처음 실행하는지에 따라서 인트로 출력
     const getIntro = async () => {
-      await AsyncStorage.getItem('intro', async (err, result) => {
+      await AsyncStorage.getItem('intro', (err, result) => {
         setFirstLaunch(result);
         // 고쳐야함 저장안됨
         console.log('result : ', result);
@@ -56,13 +64,40 @@ const App: () => Node = () => {
       });
     };
 
+    // const save = async () => {
+    //   try {
+    //     await AsyncStorage.setItem('intro', 'true');
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // };
+
+    // const load = async () => {
+    //   try {
+    //     const intro = AsyncStorage.getItem('intro');
+    //     if (intro !== null) {
+    //       console.log('intro : ' + JSON.stringify(intro));
+    //       setUserData(intro);
+    //       return;
+    //     }
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // };
+
+    // save();
+    // load();
     requestPermission();
     setIntro();
     getIntro();
-    if (firstLaunch === '1') {
-      setShowRealApp(true);
-    }
+    // if (firstLaunch === 'true') {
+    //   setShowRealApp(true);
+    // }
   }, []);
+
+  // useEffect(() => {
+  //   console.log('userData : ' + JSON.stringify(userData));
+  // }, [userData]);
 
   const onDone = () => {
     setShowRealApp(true);

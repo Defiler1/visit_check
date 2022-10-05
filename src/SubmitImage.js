@@ -49,34 +49,36 @@ const SubmitImage = ({route}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.inputBox}>
-        <TextInput
-          style={styles.reasonInput}
-          placeholder="제목"
-          value={dateTitle}
-        />
-      </View>
-      <View style={styles.imageBox}>
-        <View style={styles.image} onPress={subImage}>
-          <Image source={{uri: imageSrc}} />
+      <ScrollView style={styles.container}>
+        <View style={styles.inputBox}>
+          <TextInput
+            style={styles.reasonInput}
+            placeholder="제목"
+            value={dateTitle}
+          />
         </View>
-      </View>
-      <View style={styles.submitbox}>
-        <View style={styles.submit}>
-          <TouchableOpacity style={styles.submitBtn} onPress={subImage}>
-            <Text style={{color: 'white'}}>이미지 선택</Text>
-          </TouchableOpacity>
+        <View style={styles.imageBox}>
+          <View style={styles.image} onPress={subImage}>
+            <Image source={{uri: imageSrc}} />
+          </View>
         </View>
-        <View style={styles.submit}>
-          <TouchableOpacity
-            style={styles.submitBtn}
-            onPress={() => {
-              uploadImg();
-            }}>
-            <Text style={{color: 'white'}}>제출</Text>
-          </TouchableOpacity>
+        <View style={styles.submitbox}>
+          <View style={styles.submit}>
+            <TouchableOpacity style={styles.submitBtn} onPress={subImage}>
+              <Text style={{color: 'white'}}>이미지 선택</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.submit}>
+            <TouchableOpacity
+              style={styles.submitBtn}
+              onPress={() => {
+                uploadImg();
+              }}>
+              <Text style={{color: 'white'}}>제출</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -99,7 +101,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
   },
   imageBox: {
-    flex: 1,
+    height: 350,
     alignItems: 'center',
     paddingTop: '7%',
     paddingBottom: '3%',
@@ -114,7 +116,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   submitbox: {
-    flex: 0.4,
+    height: 110,
   },
   submit: {
     flex: 1,

@@ -27,8 +27,8 @@ const SubmitReason = ({navigation}) => {
     //  navigation.navigate('HomeScreen')
   };
   return (
-    <SafeAreaView style={styles.container}>
-      <KeyboardAvoidingView style={styles.container}>
+    <SafeAreaView style={{flex: 1}}>
+      <ScrollView style={{flex: 1}}>
         <Text style={styles.headerText}>지각사유 제출</Text>
         <View style={styles.inputBox}>
           <TextInput style={styles.reasonInput} />
@@ -38,7 +38,7 @@ const SubmitReason = ({navigation}) => {
             <Text style={{color: 'white'}}>제출</Text>
           </Pressable>
         </View>
-      </KeyboardAvoidingView>
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     paddingBottom: '7%',
   },
   inputBox: {
-    flex: 1,
+    height: 340,
     alignItems: 'center',
   },
   reasonInput: {
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
   },
   submit: {
-    flex: 0.5,
+    height: 160,
     alignItems: 'center',
     paddingTop: '5%',
   },
